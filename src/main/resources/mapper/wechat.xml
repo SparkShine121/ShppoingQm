@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.WeChatMapper">
+
+    <insert id="insert" parameterType="com.chatpojo.Message">
+        insert into wechat(fromName, toName, message, dateTime)
+        values (#{fromName}, #{toName}, #{message}, #{dateTime})
+    </insert>
+    <select id="select" resultType="com.chatpojo.Message">
+        select *
+        from wechat
+        where fromName = #{fromName} and toName = #{toName}
+           or fromName = #{toName} and toName = #{fromName}
+    </select>
+</mapper>

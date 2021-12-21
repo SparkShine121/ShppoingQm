@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.UserMapper">
+    <insert id="register" parameterType="com.entity.User">
+        insert user(username, password, status, hb_status, salt, creat_time)
+        values (#{username}, #{password}, #{status}, #{hbStatus}, #{salt}, #{date})
+    </insert>
+    <select id="selectName" parameterType="com.entity.User" resultType="com.entity.User">
+        select *
+        from user
+        where username = #{username}
+    </select>
+    <select id="login" parameterType="com.entity.User" resultType="com.entity.User">
+        select *
+        from user
+        where username = #{username}
+          and password = #{password}
+    </select>
+    <select id="selectPt" resultType="com.entity.User">
+        select *
+        from user
+        where auth = 2
+    </select>
+    <select id="selectById" resultType="com.entity.User">
+        select *
+        from user
+        where id = #{id}
+    </select>
+</mapper>

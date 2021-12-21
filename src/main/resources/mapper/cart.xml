@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.CartMapper">
+    <insert id="insertCart">
+        insert into cart(shop_id, product_id, quantity, selected, create_time, user_id)
+        values (#{shopId}, #{productId}, #{quantity}, #{selected}, #{createTime}, #{userId})
+    </insert>
+    <update id="updateCart" parameterType="com.entity.Cart">
+        update cart
+        set quantity=#{quantity}
+        where user_id = #{userId}
+          and shop_id = #{shopId}
+          and product_id = #{productId}
+    </update>
+    <delete id="deleteCart">
+        delete
+        from cart
+        where user_id = #{userId}
+          and product_id = #{productId}
+    </delete>
+    <select id="selectList" parameterType="map" resultType="com.vo.CartVO">
+        select *
+        from cart
+                 left outer join product p on p.id = cart.product_id
+    </select>
+    <select id="selectCart" resultType="com.entity.Cart">
+        select *
+        from cart
+        where user_id = #{userId}
+          and product_id = #{productId}
+    </select>
+    <select id="selectOrNot" parameterType="com.entity.Cart">
+        update cart
+        set selected=#{selected}
+        where user_id = #{userId}
+          and shop_id = #{shopId}
+    </select>
+
+</mapper>

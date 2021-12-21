@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.OrderMapper">
+    <!--    order是关键字,所有要加反引号-->
+    <insert id="insert" parameterType="com.entity.Order">
+        insert into `order`(user_id, order_no, order_status, receiver_address, receiver_mobile, create_time,
+                            update_time, total_price)
+        values (#{userId}, #{orderNo}, #{orderStatus}, #{receiverAddress}, #{receiverMobile}, #{createTime},
+                #{updateTime}, #{totalPrice})
+    </insert>
+    <insert id="insertDetail" parameterType="com.entity.OrderDetail">
+        insert into order_detail(product_id, product_price, shop_id, order_no, count)
+        values (#{productId}, #{productPrice}, #{shopId}, #{orderNo}, #{count})
+    </insert>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.NoticeMapper">
+    <insert id="insertNotice" parameterType="com.entity.Notice">
+        insert into notice(user_id, content, create_time, order_no, sqr_id)
+        values (#{userId}, #{content}, #{createTime}, #{orderNo}, #{sqrId})
+    </insert>
+
+    <select id="selectNotice" parameterType="com.entity.Notice" resultType="com.entity.Notice">
+        select *
+        from notice
+        where user_id = #{userId};
+    </select>
+</mapper>

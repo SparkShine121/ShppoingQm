@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "elasticsearch.cluster-name",
+      "type": "java.lang.String",
+      "description": "Description for elasticsearch.cluster-name."
+    }
+  ]
+}
